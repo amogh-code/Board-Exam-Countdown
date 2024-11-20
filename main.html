@@ -1,163 +1,209 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Board Exam Countdown</title>
     <style>
+        /* Basic styling for the page */
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #1a1a1a;
-            color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
+
         header {
             text-align: center;
+            background-color: #4CAF50;
             padding: 20px;
-            background-color: #333;
-            color: #fff;
+            color: white;
+            font-size: 30px;
         }
-        .container {
-            padding: 20px;
-        }
-        h1, h2 {
-            color: #ffffff;
-        }
-        .countdown {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #444;
-            border-radius: 5px;
-            font-size: 24px;
+
+        #countdown {
+            font-size: 20px;
             font-weight: bold;
-        }
-        .chapters {
-            margin-top: 30px;
-            background-color: #333;
+            color: #ff6347;
             padding: 10px;
-            border-radius: 5px;
         }
-        .chapters input {
-            margin: 10px;
+
+        #subjects {
+            margin: 20px;
         }
-        .progress {
-            margin-top: 20px;
+
+        #subjects div {
+            margin-bottom: 20px;
             padding: 10px;
-            background-color: #444;
-            border-radius: 5px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        .progress-bar {
-            width: 100%;
-            background-color: #ddd;
-            height: 30px;
-            border-radius: 5px;
+
+        h2 {
+            color: #4CAF50;
         }
-        .progress-bar div {
-            height: 100%;
-            background-color: #76c7c0;
-            border-radius: 5px;
+
+        ul {
+            list-style: none;
+            padding: 0;
         }
+
+        li {
+            margin: 8px 0;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
         footer {
             text-align: center;
-            padding: 20px;
+            margin-top: 20px;
+            padding: 10px;
             background-color: #333;
-            color: #fff;
+            color: white;
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>Board Exam Countdown</h1>
+        <div id="countdown"></div>
+    </header>
 
-<header>
-    <h1>Board Exam Countdown</h1>
-    <h2>Countdown for Your Exams</h2>
-</header>
-
-<div class="container">
-    <!-- Countdown Timers -->
-    <div class="countdown">
-        <h3>Countdown to Exam Start</h3>
-        <p id="examStartTimer"></p>
-    </div>
-
-    <div class="countdown">
-        <h3>Countdown to Exam End</h3>
-        <p id="examEndTimer"></p>
-    </div>
-
-    <!-- Chapters and Checkbox Progress -->
-    <div class="chapters">
-        <h3>Chapters for All Subjects</h3>
-        <form id="syllabusForm">
-            <div><input type="checkbox" id="phy1"> Physics: Reproduction in Organisms</div>
-            <div><input type="checkbox" id="phy2"> Physics: Sexual Reproduction in Flowering Plants</div>
-            <div><input type="checkbox" id="chem1"> Chemistry: Human Reproduction</div>
-            <div><input type="checkbox" id="chem2"> Chemistry: Reproductive Health</div>
-            <div><input type="checkbox" id="math1"> Math: Principles of Inheritance</div>
-            <div><input type="checkbox" id="math2"> Math: Molecular Basis of Inheritance</div>
-            <div><input type="checkbox" id="bio1"> Biology: Human Health and Disease</div>
-            <div><input type="checkbox" id="bio2"> Biology: Microbes in Human Welfare</div>
-            <div><input type="checkbox" id="psych1"> Psychology: Intelligence and Aptitude</div>
-            <div><input type="checkbox" id="psych2"> Psychology: Self and Personality</div>
-        </form>
-    </div>
-
-    <!-- Progress Bar -->
-    <div class="progress">
-        <h3>Progress</h3>
-        <div class="progress-bar">
-            <div id="progressBar" style="width: 0%"></div>
+    <section id="subjects">
+        <!-- Physics -->
+        <div id="phy">
+            <h2>Physics - 21st February</h2>
+            <ul>
+                <li><input type="checkbox" id="phy-chapter1"> Chapter 1: Electric Charges and Fields</li>
+                <li><input type="checkbox" id="phy-chapter2"> Chapter 2: Electrostatic Potential and Capacitance</li>
+                <li><input type="checkbox" id="phy-chapter3"> Chapter 3: Current Electricity</li>
+                <li><input type="checkbox" id="phy-chapter4"> Chapter 4: Moving Charges and Magnetism</li>
+                <li><input type="checkbox" id="phy-chapter5"> Chapter 5: Magnetism and Matter</li>
+                <li><input type="checkbox" id="phy-chapter6"> Chapter 6: Electromagnetic Induction</li>
+                <li><input type="checkbox" id="phy-chapter7"> Chapter 7: Alternating Current</li>
+                <li><input type="checkbox" id="phy-chapter8"> Chapter 8: Electromagnetic Waves</li>
+                <li><input type="checkbox" id="phy-chapter9"> Chapter 9: Ray Optics and Optical Instruments</li>
+                <li><input type="checkbox" id="phy-chapter10"> Chapter 10: Wave Optics</li>
+                <li><input type="checkbox" id="phy-chapter11"> Chapter 11: Dual Nature of Matter and Radiation</li>
+                <li><input type="checkbox" id="phy-chapter12"> Chapter 12: Atoms and Nuclei</li>
+                <li><input type="checkbox" id="phy-chapter13"> Chapter 13: Electronic Devices</li>
+            </ul>
+            <p>Next Exam: Chemistry in 6 days</p>
         </div>
-    </div>
-</div>
 
-<footer>
-    <p>&copy; 2024 Board Exam Countdown | Designed for Students</p>
-</footer>
+        <!-- Chemistry -->
+        <div id="chem">
+            <h2>Chemistry - 27th February</h2>
+            <ul>
+                <li><input type="checkbox" id="chem-chapter1"> Chapter 1: Solid State</li>
+                <li><input type="checkbox" id="chem-chapter2"> Chapter 2: Solutions</li>
+                <li><input type="checkbox" id="chem-chapter3"> Chapter 3: Electrochemistry</li>
+                <li><input type="checkbox" id="chem-chapter4"> Chapter 4: Chemical Kinetics</li>
+                <li><input type="checkbox" id="chem-chapter5"> Chapter 5: Surface Chemistry</li>
+                <li><input type="checkbox" id="chem-chapter6"> Chapter 6: General Principles and Processes of Isolation of Elements</li>
+                <li><input type="checkbox" id="chem-chapter7"> Chapter 7: p-Block Elements</li>
+                <li><input type="checkbox" id="chem-chapter8"> Chapter 8: d- and f-Block Elements</li>
+                <li><input type="checkbox" id="chem-chapter9"> Chapter 9: Coordination Compounds</li>
+                <li><input type="checkbox" id="chem-chapter10"> Chapter 10: Haloalkanes and Haloarenes</li>
+                <li><input type="checkbox" id="chem-chapter11"> Chapter 11: Alcohols, Phenols, and Ethers</li>
+                <li><input type="checkbox" id="chem-chapter12"> Chapter 12: Aldehydes, Ketones, and Carboxylic Acids</li>
+                <li><input type="checkbox" id="chem-chapter13"> Chapter 13: Organic Compounds Containing Nitrogen</li>
+                <li><input type="checkbox" id="chem-chapter14"> Chapter 14: Biomolecules</li>
+                <li><input type="checkbox" id="chem-chapter15"> Chapter 15: Polymers</li>
+                <li><input type="checkbox" id="chem-chapter16"> Chapter 16: Chemistry in Everyday Life</li>
+            </ul>
+            <p>Next Exam: Mathematics in 9 days</p>
+        </div>
 
-<script>
-    // Countdown Calculation
-    const examStartDate = new Date("February 21, 2024 09:00:00").getTime();
-    const examEndDate = new Date("April 4, 2024 17:00:00").getTime();
+        <!-- Mathematics -->
+        <div id="math">
+            <h2>Mathematics - 8th March</h2>
+            <ul>
+                <li><input type="checkbox" id="math-chapter1"> Chapter 1: Relations and Functions</li>
+                <li><input type="checkbox" id="math-chapter2"> Chapter 2: Inverse Trigonometric Functions</li>
+                <li><input type="checkbox" id="math-chapter3"> Chapter 3: Matrices</li>
+                <li><input type="checkbox" id="math-chapter4"> Chapter 4: Determinants</li>
+                <li><input type="checkbox" id="math-chapter5"> Chapter 5: Continuity and Differentiability</li>
+                <li><input type="checkbox" id="math-chapter6"> Chapter 6: Application of Derivatives</li>
+                <li><input type="checkbox" id="math-chapter7"> Chapter 7: Integrals</li>
+                <li><input type="checkbox" id="math-chapter8"> Chapter 8: Application of Integrals</li>
+                <li><input type="checkbox" id="math-chapter9"> Chapter 9: Differential Equations</li>
+                <li><input type="checkbox" id="math-chapter10"> Chapter 10: Vector Algebra</li>
+                <li><input type="checkbox" id="math-chapter11"> Chapter 11: Three Dimensional Geometry</li>
+                <li><input type="checkbox" id="math-chapter12"> Chapter 12: Probability</li>
+                <li><input type="checkbox" id="math-chapter13"> Chapter 13: Statistics</li>
+            </ul>
+            <p>Next Exam: English in 3 days</p>
+        </div>
 
-    function updateCountdowns() {
-        const now = new Date().getTime();
-        const timeUntilStart = examStartDate - now;
-        const timeUntilEnd = examEndDate - now;
+        <!-- English -->
+        <div id="eng">
+            <h2>English - 11th March</h2>
+            <ul>
+                <li><input type="checkbox" id="eng-chapter1"> Chapter 1: Flamingo - A Thing of Beauty</li>
+                <li><input type="checkbox" id="eng-chapter2"> Chapter 2: Lost Spring</li>
+                <li><input type="checkbox" id="eng-chapter3"> Chapter 3: Deep Water</li>
+                <li><input type="checkbox" id="eng-chapter4"> Chapter 4: The Rattrap</li>
+                <li><input type="checkbox" id="eng-chapter5"> Chapter 5: Indigo</li>
+                <li><input type="checkbox" id="eng-chapter6"> Chapter 6: Poets and Pancakes</li>
+                <li><input type="checkbox" id="eng-chapter7"> Chapter 7: The Interview</li>
+                <li><input type="checkbox" id="eng-chapter8"> Chapter 8: Going Places</li>
+                <li><input type="checkbox" id="eng-chapter9"> Writing Skills: Letter Writing, Report Writing, etc.</li>
+            </ul>
+            <p>Next Exam: Biology in 14 days</p>
+        </div>
 
-        if (timeUntilStart >= 0) {
-            let days = Math.floor(timeUntilStart / (1000 * 60 * 60 * 24));
-            let hours = Math.floor((timeUntilStart % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            let minutes = Math.floor((timeUntilStart % (1000 * 60 * 60)) / (1000 * 60));
-            let seconds = Math.floor((timeUntilStart % (1000 * 60)) / 1000);
-            document.getElementById("examStartTimer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-        }
+        <!-- Biology -->
+        <!-- Biology -->
+        <div id="bio">
+            <h2>Biology - 13th March</h2>
+            <ul>
+                <li><input type="checkbox" id="bio-chapter1"> Chapter 1: Reproduction in Organisms</li>
+                <li><input type="checkbox" id="bio-chapter2"> Chapter 2: Sexual Reproduction in Flowering Plants</li>
+                <li><input type="checkbox" id="bio-chapter3"> Chapter 3: Human Reproduction</li>
+                <li><input type="checkbox" id="bio-chapter4"> Chapter 4: Reproductive Health</li>
+                <li><input type="checkbox" id="bio-chapter5"> Chapter 5: Principles of Inheritance and Variation</li>
+                <li><input type="checkbox" id="bio-chapter6"> Chapter 6: Molecular Basis of Inheritance</li>
+                <li><input type="checkbox" id="bio-chapter7"> Chapter 7: Evolution</li>
+                <li><input type="checkbox" id="bio-chapter8"> Chapter 8: Human Health and Disease</li>
+                <li><input type="checkbox" id="bio-chapter9"> Chapter 9: Strategies for Enhancement in Food Production</li>
+                <li><input type="checkbox" id="bio-chapter10"> Chapter 10: Microbes in Human Welfare</li>
+                <li><input type="checkbox" id="bio-chapter11"> Chapter 11: Biotechnology: Principles and Processes</li>
+                <li><input type="checkbox" id="bio-chapter12"> Chapter 12: Biotechnology and Its Applications</li>
+                <li><input type="checkbox" id="bio-chapter13"> Chapter 13: Organisms and Populations</li>
+                <li><input type="checkbox" id="bio-chapter14"> Chapter 14: Ecosystem</li>
+                <li><input type="checkbox" id="bio-chapter15"> Chapter 15: Biodiversity and Conservation</li>
+                <li><input type="checkbox" id="bio-chapter16"> Chapter 16: Environmental Issues</li>
+            </ul>
+            <p>Next Exam: Hindi in 18 days</p>
+        </div>
 
-        if (timeUntilEnd >= 0) {
-            let days = Math.floor(timeUntilEnd / (1000 * 60 * 60 * 24));
-            let hours = Math.floor((timeUntilEnd % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            let minutes = Math.floor((timeUntilEnd % (1000 * 60 * 60)) / (1000 * 60));
-            let seconds = Math.floor((timeUntilEnd % (1000 * 60)) / 1000);
-            document.getElementById("examEndTimer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-        }
-    }
+    </section>
 
-    setInterval(updateCountdowns, 1000);
+    <footer>
+        <p>Good Luck with Your Exams!</p>
+    </footer>
 
-    // Calculate Progress
-    const totalChapters = 10;
-    let completedChapters = 0;
+    <script>
+        // Countdown to the board exam date
+        const examDate = new Date("2024-02-21").getTime(); // Example date (you can adjust)
+        const countdownElement = document.getElementById("countdown");
 
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-            completedChapters = Array.from(checkboxes).filter(cb => cb.checked).length;
-            let progressPercentage = (completedChapters / totalChapters) * 100;
-            document.getElementById('progressBar').style.width = progressPercentage + '%';
-        });
-    });
-</script>
+        setInterval(function() {
+            const currentDate = new Date().getTime();
+            const timeDifference = examDate - currentDate;
 
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = `Time Left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }, 1000);
+    </script>
 </body>
 </html>
