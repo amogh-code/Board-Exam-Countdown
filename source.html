@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board Exam Countdown</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+        .container {
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #ffffff;
+        }
+        .countdown {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #444;
+            border-radius: 5px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .chapters {
+            margin-top: 30px;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .chapters input {
+            margin: 10px;
+        }
+        .progress {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #444;
+            border-radius: 5px;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #ddd;
+            height: 30px;
+            border-radius: 5px;
+        }
+        .progress-bar div {
+            height: 100%;
+            background-color: #76c7c0;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Board Exam Countdown</h1>
+    <h2>Countdown for Your Exams</h2>
+</header>
+
+<div class="container">
+    <!-- Countdown Timers -->
+    <div class="countdown">
+        <h3>Countdown to Exam Start</h3>
+        <p id="examStartTimer"></p>
+    </div>
+
+    <div class="countdown">
+        <h3>Countdown to Exam End</h3>
+        <p id="examEndTimer"></p>
+    </div>
+
+    <!-- Chapters and Checkbox Progress -->
+    <div class="chapters">
+        <h3>Chapters for All Subjects</h3>
+        <form id="syllabusForm">
+            <div><input type="checkbox" id="phy1"> Physics: Reproduction in Organisms</div>
+            <div><input type="checkbox" id="phy2"> Physics: Sexual Reproduction in Flowering Plants</div>
+            <div><input type="checkbox" id="chem1"> Chemistry: Human Reproduction</div>
+            <div><input type="checkbox" id="chem2"> Chemistry: Reproductive Health</div>
+            <div><input type="checkbox" id="math1"> Math: Principles of Inheritance</div>
+            <div><input type="checkbox" id="math2"> Math: Molecular Basis of Inheritance</div>
+            <div><input type="checkbox" id="bio1"> Biology: Human Health and Disease</div>
+            <div><input type="checkbox" id="bio2"> Biology: Microbes in Human Welfare</div>
+            <div><input type="checkbox" id="psych1"> Psychology: Intelligence and Aptitude</div>
+            <div><input type="checkbox" id="psych2"> Psychology: Self and Personality</div>
+        </form>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress">
+        <h3>Progress</h3>
+        <div class="progress-bar">
+            <div id="progressBar" style="width: 0%"></div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Board Exam Countdown | Designed for Students</p>
+</footer>
+
+<script>
+    // Countdown Calculation
+    const examStartDate = new Date("February 21, 2024 09:00:00").getTime();
+    const examEndDate = new Date("April 4, 2024 17:00:00").getTime();
+
+    function updateCountdowns() {
+        const now = new Date().getTime();
+        const timeUntilStart = examStartDate - now;
+        const timeUntilEnd = examEndDate - now;
+
+        if (timeUntilStart >= 0) {
+            let days = Math.floor(timeUntilStart / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((timeUntilStart % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((timeUntilStart % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((timeUntilStart % (1000 * 60)) / 1000);
+            document.getElementById("examStartTimer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        if (timeUntilEnd >= 0) {
+            let days = Math.floor(timeUntilEnd / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((timeUntilEnd % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((timeUntilEnd % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((timeUntilEnd % (1000 * 60)) / 1000);
+            document.getElementById("examEndTimer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+    }
+
+    setInterval(updateCountdowns, 1000);
+
+    // Calculate Progress
+    const totalChapters = 10;
+    let completedChapters = 0;
+
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            completedChapters = Array.from(checkboxes).filter(cb => cb.checked).length;
+            let progressPercentage = (completedChapters / totalChapters) * 100;
+            document.getElementById('progressBar').style.width = progressPercentage + '%';
+        });
+    });
+</script>
+
+</body>
+</html>
